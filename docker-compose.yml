@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: praktikum
+    volumes:
+      - db_data:/var/lib/mysql
+  web:
+    image: ${IMAGE_NAME:-youruser/simple-app}:${TAG:-latest}
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: rootpass
+      DB_NAME: praktikum
+    depends_on:
+      - db
+volumes:
+  db_data:
