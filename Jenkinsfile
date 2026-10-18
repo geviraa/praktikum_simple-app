@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'USERNAME_DOCKERHUB/simple-app'
+       IMAGE_NAME = 'geviraa/simple-app'
         REGISTRY_CREDENTIALS = 'dockerhub-credentials'
     }
 
